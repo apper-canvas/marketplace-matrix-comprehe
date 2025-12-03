@@ -1,0 +1,314 @@
+[
+  {
+    "Id": 1,
+    "name": "Premium Wireless Headphones",
+    "description": "High-quality wireless headphones with active noise cancellation, premium materials, and 30-hour battery life. Perfect for audiophiles and professionals.",
+    "price": 299.99,
+    "originalPrice": 349.99,
+    "category": "Electronics",
+    "subcategory": "Audio",
+    "images": [
+      "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=500",
+      "https://images.unsplash.com/photo-1583394838336-acd977736f90?w=500",
+      "https://images.unsplash.com/photo-1484704849700-f032a568e944?w=500"
+    ],
+    "rating": 4.8,
+    "reviewCount": 1247,
+    "inStock": true,
+    "stockCount": 45,
+    "specifications": {
+      "Battery Life": "30 hours",
+      "Connectivity": "Bluetooth 5.0",
+      "Weight": "250g",
+      "Noise Cancellation": "Active",
+      "Warranty": "2 years"
+    },
+    "features": ["Active Noise Cancellation", "Quick Charge", "Voice Assistant Compatible", "Foldable Design"]
+  },
+  {
+    "Id": 2,
+    "name": "Smart Fitness Tracker",
+    "description": "Advanced fitness tracker with heart rate monitoring, GPS tracking, sleep analysis, and 7-day battery life. Water-resistant design perfect for active lifestyles.",
+    "price": 149.99,
+    "originalPrice": 199.99,
+    "category": "Electronics",
+    "subcategory": "Wearables",
+    "images": [
+      "https://images.unsplash.com/photo-1575311373937-040b8e1fd5b6?w=500",
+      "https://images.unsplash.com/photo-1434494878577-86c23bcb06b9?w=500",
+      "https://images.unsplash.com/photo-1544117519-31a4b719223d?w=500"
+    ],
+    "rating": 4.6,
+    "reviewCount": 892,
+    "inStock": true,
+    "stockCount": 78,
+    "specifications": {
+      "Battery Life": "7 days",
+      "Water Resistance": "5ATM",
+      "Display": "AMOLED",
+      "Sensors": "Heart Rate, GPS, Accelerometer",
+      "Compatibility": "iOS & Android"
+    },
+    "features": ["Heart Rate Monitoring", "GPS Tracking", "Sleep Analysis", "Water Resistant"]
+  },
+  {
+    "Id": 3,
+    "name": "Organic Cotton Sweater",
+    "description": "Luxuriously soft organic cotton sweater in classic design. Sustainably sourced materials with attention to comfort and style. Available in multiple colors.",
+    "price": 89.99,
+    "originalPrice": null,
+    "category": "Clothing",
+    "subcategory": "Sweaters",
+    "images": [
+      "https://images.unsplash.com/photo-1434389677669-e08b4cac3105?w=500",
+      "https://images.unsplash.com/photo-1618354691373-d851c5c3a990?w=500",
+      "https://images.unsplash.com/photo-1576566588028-4147f3842f27?w=500"
+    ],
+    "rating": 4.4,
+    "reviewCount": 324,
+    "inStock": true,
+    "stockCount": 23,
+    "specifications": {
+      "Material": "100% Organic Cotton",
+      "Care": "Machine Wash",
+      "Fit": "Regular",
+      "Colors": "5 Available",
+      "Sustainability": "GOTS Certified"
+    },
+    "features": ["Organic Cotton", "Sustainable", "Machine Washable", "Classic Design"]
+  },
+  {
+    "Id": 4,
+    "name": "Professional Coffee Maker",
+    "description": "Premium coffee maker with precise temperature control, multiple brew settings, and built-in grinder. Creates café-quality coffee at home.",
+    "price": 459.99,
+    "originalPrice": 529.99,
+    "category": "Home & Kitchen",
+    "subcategory": "Coffee Makers",
+    "images": [
+      "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=500",
+      "https://images.unsplash.com/photo-1442512595331-e89e73853f31?w=500",
+      "https://images.unsplash.com/photo-1506372023823-6d32b11384d0?w=500"
+    ],
+    "rating": 4.7,
+    "reviewCount": 567,
+    "inStock": true,
+    "stockCount": 12,
+    "specifications": {
+      "Capacity": "12 cups",
+      "Grinder": "Built-in Burr Grinder",
+      "Material": "Stainless Steel",
+      "Programs": "5 Brew Settings",
+      "Warranty": "3 years"
+    },
+    "features": ["Built-in Grinder", "Temperature Control", "Programmable", "Auto Shut-off"]
+  },
+  {
+    "Id": 5,
+    "name": "Leather Messenger Bag",
+    "description": "Handcrafted genuine leather messenger bag with vintage styling. Perfect for professionals and students. Features multiple compartments and adjustable strap.",
+    "price": 179.99,
+    "originalPrice": null,
+    "category": "Accessories",
+    "subcategory": "Bags",
+    "images": [
+      "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=500",
+      "https://images.unsplash.com/photo-1548036328-c9fa89d128fa?w=500",
+      "https://images.unsplash.com/photo-1584917865442-de89df76afd3?w=500"
+    ],
+    "rating": 4.5,
+    "reviewCount": 198,
+    "inStock": false,
+    "stockCount": 0,
+    "specifications": {
+      "Material": "Genuine Leather",
+      "Dimensions": "15\" x 11\" x 4\"",
+      "Closure": "Magnetic Snap",
+      "Compartments": "Multiple",
+      "Strap": "Adjustable"
+    },
+    "features": ["Genuine Leather", "Multiple Compartments", "Adjustable Strap", "Vintage Style"]
+  },
+  {
+    "Id": 6,
+    "name": "Wireless Smartphone Charger",
+    "description": "Fast wireless charging pad compatible with all Qi-enabled devices. Sleek design with LED indicator and overheat protection.",
+    "price": 34.99,
+    "originalPrice": 49.99,
+    "category": "Electronics",
+    "subcategory": "Accessories",
+    "images": [
+      "https://images.unsplash.com/photo-1609592424580-cdcfd6cd8951?w=500",
+      "https://images.unsplash.com/photo-1619976404943-05d5f73d0a3d?w=500",
+      "https://images.unsplash.com/photo-1598570144434-d946e57c2296?w=500"
+    ],
+    "rating": 4.3,
+    "reviewCount": 756,
+    "inStock": true,
+    "stockCount": 156,
+    "specifications": {
+      "Charging Speed": "10W Fast Charge",
+      "Compatibility": "Qi-enabled devices",
+      "Material": "Aluminum",
+      "Safety": "Overheat Protection",
+      "Cable": "USB-C included"
+    },
+    "features": ["Fast Charging", "Qi Compatible", "LED Indicator", "Overheat Protection"]
+  },
+  {
+    "Id": 7,
+    "name": "Designer Sunglasses",
+    "description": "Premium designer sunglasses with UV400 protection and polarized lenses. Lightweight titanium frame with classic styling.",
+    "price": 239.99,
+    "originalPrice": 299.99,
+    "category": "Accessories",
+    "subcategory": "Sunglasses",
+    "images": [
+      "https://images.unsplash.com/photo-1508296695146-257a814070b4?w=500",
+      "https://images.unsplash.com/photo-1511499767150-a48a237f0083?w=500",
+      "https://images.unsplash.com/photo-1572635196237-14b3f281503f?w=500"
+    ],
+    "rating": 4.6,
+    "reviewCount": 89,
+    "inStock": true,
+    "stockCount": 34,
+    "specifications": {
+      "Frame Material": "Titanium",
+      "Lens": "Polarized",
+      "UV Protection": "UV400",
+      "Weight": "28g",
+      "Style": "Classic"
+    },
+    "features": ["UV400 Protection", "Polarized Lenses", "Titanium Frame", "Lightweight"]
+  },
+  {
+    "Id": 8,
+    "name": "Yoga Mat Premium",
+    "description": "High-quality yoga mat made from eco-friendly materials. Non-slip surface with excellent cushioning for all types of yoga practice.",
+    "price": 59.99,
+    "originalPrice": null,
+    "category": "Sports & Outdoors",
+    "subcategory": "Yoga",
+    "images": [
+      "https://images.unsplash.com/photo-1601925260368-ae2f83cf8b7f?w=500",
+      "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=500",
+      "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=500"
+    ],
+    "rating": 4.7,
+    "reviewCount": 412,
+    "inStock": true,
+    "stockCount": 67,
+    "specifications": {
+      "Material": "Eco-friendly TPE",
+      "Dimensions": "72\" x 24\"",
+      "Thickness": "6mm",
+      "Weight": "2.5 lbs",
+      "Surface": "Non-slip"
+    },
+    "features": ["Eco-friendly", "Non-slip Surface", "Extra Cushioning", "Lightweight"]
+  },
+  {
+    "Id": 9,
+    "name": "Gourmet Tea Collection",
+    "description": "Premium collection of 12 different gourmet teas from around the world. Includes black, green, white, and herbal varieties in elegant packaging.",
+    "price": 79.99,
+    "originalPrice": 99.99,
+    "category": "Food & Beverages",
+    "subcategory": "Tea",
+    "images": [
+      "https://images.unsplash.com/photo-1597318281675-24c49bc6eb1d?w=500",
+      "https://images.unsplash.com/photo-1576092768241-dec231879fc3?w=500",
+      "https://images.unsplash.com/photo-1556679343-c7306c1976bc?w=500"
+    ],
+    "rating": 4.8,
+    "reviewCount": 134,
+    "inStock": true,
+    "stockCount": 28,
+    "specifications": {
+      "Varieties": "12 Different Teas",
+      "Types": "Black, Green, White, Herbal",
+      "Packaging": "Premium Gift Box",
+      "Origin": "Various Countries",
+      "Quantity": "20 bags per variety"
+    },
+    "features": ["12 Varieties", "Premium Quality", "Gift Packaging", "International Selection"]
+  },
+  {
+    "Id": 10,
+    "name": "Bluetooth Speaker Pro",
+    "description": "Portable Bluetooth speaker with 360-degree sound, waterproof design, and 24-hour battery life. Perfect for outdoor adventures and parties.",
+    "price": 89.99,
+    "originalPrice": 119.99,
+    "category": "Electronics",
+    "subcategory": "Audio",
+    "images": [
+      "https://images.unsplash.com/photo-1608043152269-423dbba4e7e1?w=500",
+      "https://images.unsplash.com/photo-1589003077984-894e133dabab?w=500",
+      "https://images.unsplash.com/photo-1545454675-3531b543be5d?w=500"
+    ],
+    "rating": 4.5,
+    "reviewCount": 623,
+    "inStock": true,
+    "stockCount": 91,
+    "specifications": {
+      "Battery Life": "24 hours",
+      "Water Rating": "IPX7",
+      "Sound": "360-degree",
+      "Connectivity": "Bluetooth 5.0",
+      "Range": "100 feet"
+    },
+    "features": ["360-degree Sound", "Waterproof", "24-hour Battery", "Bluetooth 5.0"]
+  },
+  {
+    "Id": 11,
+    "name": "Ergonomic Office Chair",
+    "description": "Professional ergonomic office chair with lumbar support, adjustable height, and breathable mesh back. Designed for long work sessions.",
+    "price": 329.99,
+    "originalPrice": 399.99,
+    "category": "Home & Office",
+    "subcategory": "Furniture",
+    "images": [
+      "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=500",
+      "https://images.unsplash.com/photo-1541558869434-2840d308329a?w=500",
+      "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=500"
+    ],
+    "rating": 4.6,
+    "reviewCount": 287,
+    "inStock": true,
+    "stockCount": 15,
+    "specifications": {
+      "Material": "Mesh & Fabric",
+      "Weight Capacity": "300 lbs",
+      "Height Range": "17\"-21\"",
+      "Armrests": "Adjustable",
+      "Warranty": "5 years"
+    },
+    "features": ["Lumbar Support", "Breathable Mesh", "Adjustable Height", "Ergonomic Design"]
+  },
+  {
+    "Id": 12,
+    "name": "Kitchen Knife Set",
+    "description": "Professional 8-piece kitchen knife set with high-carbon stainless steel blades. Includes wooden block and sharpening steel.",
+    "price": 149.99,
+    "originalPrice": null,
+    "category": "Home & Kitchen",
+    "subcategory": "Cutlery",
+    "images": [
+      "https://images.unsplash.com/photo-1593618998160-e34014e67546?w=500",
+      "https://images.unsplash.com/photo-1563245372-f21724e3856d?w=500",
+      "https://images.unsplash.com/photo-1594736797933-d0401ba2fe65?w=500"
+    ],
+    "rating": 4.7,
+    "reviewCount": 445,
+    "inStock": true,
+    "stockCount": 38,
+    "specifications": {
+      "Pieces": "8-piece set",
+      "Material": "High-carbon stainless steel",
+      "Handle": "Ergonomic",
+      "Block": "Wooden storage block",
+      "Maintenance": "Dishwasher safe"
+    },
+    "features": ["Professional Grade", "Wooden Block", "Sharpening Steel", "Ergonomic Handles"]
+  }
+]
