@@ -1,8 +1,9 @@
 import { createBrowserRouter } from "react-router-dom";
-import { lazy, Suspense } from "react";
-import Layout from "@/components/organisms/Layout";
+import React, { Suspense, lazy } from "react";
+import { getRouteConfig } from "./route.utils";
 
-const LoadingComponent = () => (
+// Loading component
+const LoadingSpinner = () => (
   <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 to-indigo-100">
     <div className="text-center space-y-4">
       <svg className="animate-spin h-12 w-12 text-blue-600 mx-auto" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
@@ -14,98 +15,134 @@ const LoadingComponent = () => (
   </div>
 );
 
+// Route helper function
+const createRoute = ({
+  path,
+  index,
+  element,
+  access,
+  children,
+  ...meta
+}) => {
+  // Get config for this route
+  let configPath;
+  if (index) {
+    configPath = "/";
+  } else {
+    configPath = path.startsWith('/') ? path : `/${path}`;
+  }
+
+  const config = getRouteConfig(configPath);
+  const finalAccess = access || config?.allow;
+
+  const route = {
+    ...(index ? { index: true } : { path }),
+    element: element ? <Suspense fallback={<LoadingSpinner />}>{element}</Suspense> : element,
+    handle: {
+      access: finalAccess,
+      ...meta,
+    },
+  };
+
+  if (children && children.length > 0) {
+    route.children = children;
+  }
+
+  return route;
+};
+
+// Lazy load components
+const Root = lazy(() => import("@/layouts/Root"));
+const LayoutComponent = lazy(() => import("@/components/organisms/Layout"));
 const Home = lazy(() => import("@/components/pages/Home"));
+const Category = lazy(() => import("@/components/pages/Category"));
 const ProductDetail = lazy(() => import("@/components/pages/ProductDetail"));
 const Cart = lazy(() => import("@/components/pages/Cart"));
 const Checkout = lazy(() => import("@/components/pages/Checkout"));
-const OrderConfirmation = lazy(() => import("@/components/pages/OrderConfirmation"));
-const Category = lazy(() => import("@/components/pages/Category"));
-const Wishlist = lazy(() => import("@/components/pages/Wishlist"));
 const Orders = lazy(() => import("@/components/pages/Orders"));
+const Wishlist = lazy(() => import("@/components/pages/Wishlist"));
+const OrderConfirmation = lazy(() => import("@/components/pages/OrderConfirmation"));
+const Login = lazy(() => import("@/components/pages/Login"));
+const Signup = lazy(() => import("@/components/pages/Signup"));
+const Callback = lazy(() => import("@/components/pages/Callback"));
+const ErrorPage = lazy(() => import("@/components/pages/ErrorPage"));
+const ResetPassword = lazy(() => import("@/components/pages/ResetPassword"));
+const PromptPassword = lazy(() => import("@/components/pages/PromptPassword"));
 const NotFound = lazy(() => import("@/components/pages/NotFound"));
 
-const mainRoutes = [
-  {
-    path: "",
-    index: true,
-    element: (
-      <Suspense fallback={<LoadingComponent />}>
-        <Home />
-      </Suspense>
-    ),
-  },
-  {
-    path: "product/:id",
-    element: (
-      <Suspense fallback={<LoadingComponent />}>
-        <ProductDetail />
-      </Suspense>
-    ),
-  },
-  {
-    path: "category/:categoryName",
-    element: (
-      <Suspense fallback={<LoadingComponent />}>
-        <Category />
-      </Suspense>
-    ),
-  },
-  {
-    path: "cart",
-    element: (
-      <Suspense fallback={<LoadingComponent />}>
-        <Cart />
-      </Suspense>
-    ),
-  },
-  {
-    path: "checkout",
-    element: (
-      <Suspense fallback={<LoadingComponent />}>
-        <Checkout />
-      </Suspense>
-    ),
-  },
-  {
-    path: "order-confirmation/:orderId",
-    element: (
-      <Suspense fallback={<LoadingComponent />}>
-        <OrderConfirmation />
-      </Suspense>
-    ),
-  },
-  {
-    path: "orders",
-    element: (
-      <Suspense fallback={<LoadingComponent />}>
-        <Orders />
-      </Suspense>
-    ),
-  },
-{
-    path: "wishlist",
-    element: (
-      <Suspense fallback={<LoadingComponent />}>
-        <Wishlist />
-      </Suspense>
-    ),
-  },
-  {
-    path: "*",
-    element: (
-      <Suspense fallback={<LoadingComponent />}>
-        <NotFound />
-      </Suspense>
-    ),
-  },
-];
-
-const routes = [
+export const router = createBrowserRouter([
   {
     path: "/",
-    element: <Layout />,
-    children: [...mainRoutes],
+    element: <Root />,
+    children: [
+      // Authentication routes
+      createRoute({
+        path: "login",
+        element: <Login />,
+      }),
+      createRoute({
+        path: "signup", 
+        element: <Signup />,
+      }),
+      createRoute({
+        path: "callback",
+        element: <Callback />,
+      }),
+      createRoute({
+        path: "error",
+        element: <ErrorPage />,
+      }),
+      createRoute({
+        path: "prompt-password/:appId/:emailAddress/:provider",
+        element: <PromptPassword />,
+      }),
+      createRoute({
+        path: "reset-password/:appId/:fields",
+        element: <ResetPassword />,
+      }),
+      // Main application routes with layout
+      {
+        path: "/",
+        element: <LayoutComponent />,
+        children: [
+          createRoute({
+            index: true,
+            element: <Home />,
+          }),
+          createRoute({
+            path: "category/:categoryId",
+            element: <Category />,
+          }),
+          createRoute({
+            path: "product/:productId",
+            element: <ProductDetail />,
+          }),
+          createRoute({
+            path: "cart",
+            element: <Cart />,
+          }),
+          createRoute({
+            path: "checkout",
+            element: <Checkout />,
+          }),
+          createRoute({
+            path: "orders",
+            element: <Orders />,
+          }),
+          createRoute({
+            path: "wishlist",
+            element: <Wishlist />,
+          }),
+          createRoute({
+            path: "order-confirmation/:orderId",
+            element: <OrderConfirmation />,
+          }),
+          createRoute({
+            path: "*",
+            element: <NotFound />,
+          }),
+        ],
+      },
+    ],
   },
-];
-
-export const router = createBrowserRouter(routes);
+]);

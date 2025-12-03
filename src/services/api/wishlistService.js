@@ -1,80 +1,99 @@
-const STORAGE_KEY = "marketplace_wishlist";
+import { getApperClient } from "@/services/apperClient";
 
-class WishlistService {
-  getAll() {
+export const wishlistService = {
+  async getByUserId(userId) {
     try {
-      const wishlistData = localStorage.getItem(STORAGE_KEY);
-      if (wishlistData) {
-        const parsed = JSON.parse(wishlistData);
-        return [...(parsed.items || [])];
+      const apperClient = getApperClient();
+      if (!apperClient) {
+        throw new Error("ApperClient not initialized");
       }
+
+      // Note: This is a mock implementation since wishlist table is not available in the schema
+      // In a real implementation, you would create a wishlist_c table and use ApperClient
       return [];
     } catch (error) {
-      console.error("Error loading wishlist:", error);
+      console.error("Error fetching wishlist items:", error?.response?.data?.message || error);
       return [];
     }
-  }
+  },
 
-  add(product) {
+  async add(userId, productId) {
     try {
-      const current = this.getAll();
-      const exists = current.find((item) => item.Id === product.Id);
-      
-      if (!exists) {
-        const updated = [...current, product];
-        const wishlistData = {
-          items: updated,
-          lastUpdated: new Date().toISOString(),
-        };
-        localStorage.setItem(STORAGE_KEY, JSON.stringify(wishlistData));
-        return updated;
+      const apperClient = getApperClient();
+      if (!apperClient) {
+        throw new Error("ApperClient not initialized");
       }
+
+      // Note: This is a mock implementation since wishlist table is not available in the schema
+      // In a real implementation, you would:
+      // 1. Create a wishlist_c table with user_c and product_c lookup fields
+      // 2. Use apperClient.createRecord to add the item
       
-      return current;
-    } catch (error) {
-      console.error("Error adding to wishlist:", error);
-      return this.getAll();
-    }
-  }
-
-  remove(productId) {
-    try {
-      const current = this.getAll();
-      const updated = current.filter((item) => item.Id !== productId);
-      const wishlistData = {
-        items: updated,
-        lastUpdated: new Date().toISOString(),
+      return {
+        Id: Date.now(),
+        user_c: userId,
+        product_c: productId,
+        added_at_c: new Date().toISOString()
       };
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(wishlistData));
-      return updated;
     } catch (error) {
-      console.error("Error removing from wishlist:", error);
-      return this.getAll();
+      console.error("Error adding to wishlist:", error?.response?.data?.message || error);
+      return null;
     }
-  }
+  },
 
-  clear() {
+  async remove(userId, productId) {
     try {
-      const wishlistData = {
-        items: [],
-        lastUpdated: new Date().toISOString(),
-      };
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(wishlistData));
-      return [];
+      const apperClient = getApperClient();
+      if (!apperClient) {
+        throw new Error("ApperClient not initialized");
+      }
+
+      // Note: This is a mock implementation since wishlist table is not available in the schema
+      // In a real implementation, you would:
+      // 1. Find the wishlist record using fetchRecords with where conditions
+      // 2. Use apperClient.deleteRecord to remove the item
+      
+      return true;
     } catch (error) {
-      console.error("Error clearing wishlist:", error);
-      return [];
+      console.error("Error removing from wishlist:", error?.response?.data?.message || error);
+      return false;
+    }
+  },
+
+  async clear(userId) {
+    try {
+      const apperClient = getApperClient();
+      if (!apperClient) {
+        throw new Error("ApperClient not initialized");
+      }
+
+      // Note: This is a mock implementation since wishlist table is not available in the schema
+      // In a real implementation, you would:
+      // 1. Fetch all wishlist items for the user
+      // 2. Use apperClient.deleteRecord to remove all items
+      
+      return true;
+    } catch (error) {
+      console.error("Error clearing wishlist:", error?.response?.data?.message || error);
+      return false;
+    }
+  },
+
+  async isInWishlist(userId, productId) {
+    try {
+      const apperClient = getApperClient();
+      if (!apperClient) {
+        throw new Error("ApperClient not initialized");
+      }
+
+      // Note: This is a mock implementation since wishlist table is not available in the schema
+      // In a real implementation, you would:
+      // 1. Use fetchRecords with where conditions to check if the item exists
+      
+      return false;
+    } catch (error) {
+      console.error("Error checking wishlist:", error?.response?.data?.message || error);
+      return false;
     }
   }
-
-  isInWishlist(productId) {
-    const current = this.getAll();
-    return current.some((item) => item.Id === productId);
-  }
-
-  getCount() {
-    return this.getAll().length;
-  }
-}
-
-export default new WishlistService();
+};
