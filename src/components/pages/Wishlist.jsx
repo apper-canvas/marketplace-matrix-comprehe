@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { clearWishlist } from "@/store/slices/wishlistSlice";
 import { toast } from "react-toastify";
-import ProductCard from "@/components/molecules/ProductCard";
+import { ProductCard } from "@/components/molecules/ProductCard";
 import Button from "@/components/atoms/Button";
 import ApperIcon from "@/components/ApperIcon";
 import Empty from "@/components/ui/Empty";
