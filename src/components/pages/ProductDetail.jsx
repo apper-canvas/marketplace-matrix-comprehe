@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addToCart } from "@/store/slices/cartSlice";
+import { toggleWishlistItem } from "@/store/slices/wishlistSlice";
 import { toast } from "react-toastify";
 import productService from "@/services/api/productService";
 import ProductGrid from "@/components/organisms/ProductGrid";
@@ -18,12 +19,14 @@ const ProductDetail = () => {
   
   const [product, setProduct] = useState(null);
   const [recommendedProducts, setRecommendedProducts] = useState([]);
-  const [loading, setLoading] = useState(true);
+const [loading, setLoading] = useState(true);
   const [recommendedLoading, setRecommendedLoading] = useState(false);
   const [error, setError] = useState("");
   const [selectedImage, setSelectedImage] = useState(0);
   const [quantity, setQuantity] = useState(1);
-
+  const { items: wishlistItems } = useSelector((state) => state.wishlist);
+  
+  const isInWishlist = product ? wishlistItems.some((item) => item.Id === product.Id) : false;
   useEffect(() => {
     if (id) {
       loadProduct();
@@ -37,7 +40,7 @@ const ProductDetail = () => {
       const productData = await productService.getById(id);
       setProduct(productData);
       setSelectedImage(0);
-      loadRecommendedProducts(id);
+loadRecommendedProducts(id);
     } catch (err) {
       setError(err.message || "Product not found");
     } finally {
@@ -67,9 +70,35 @@ const ProductDetail = () => {
     });
   };
 
-  const handleBuyNow = () => {
+const handleBuyNow = () => {
     handleAddToCart();
     navigate("/cart");
+  };
+
+  const handleToggleWishlist = () => {
+    if (!product) return;
+    
+    dispatch(toggleWishlistItem(product));
+    
+    if (isInWishlist) {
+      toast.success(`${product.name} removed from wishlist`, {
+        position: "top-right",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+      });
+    } else {
+      toast.success(`${product.name} added to wishlist!`, {
+        position: "top-right",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+      });
+    }
   };
 
   const formatPrice = (price) => {
@@ -221,7 +250,27 @@ const ProductDetail = () => {
                     Save {formatPrice(product.originalPrice - product.price)}
                   </Badge>
                 </>
-              )}
+)}
+              
+              <Button
+                onClick={handleToggleWishlist}
+                variant="secondary"
+                className={`w-full flex items-center justify-center space-x-2 transition-all duration-200 ${
+                  isInWishlist 
+                    ? "bg-red-50 text-red-600 border-red-300 hover:bg-red-100" 
+                    : "hover:bg-gray-50"
+                }`}
+              >
+                <ApperIcon 
+                  name="Heart" 
+                  className={`h-5 w-5 transition-all duration-200 ${
+                    isInWishlist ? "fill-current text-red-600" : ""
+                  }`}
+                />
+                <span>
+                  {isInWishlist ? "Remove from Wishlist" : "Add to Wishlist"}
+                </span>
+              </Button>
             </div>
           </div>
 

@@ -13,7 +13,8 @@ const Header = () => {
   const [categories, setCategories] = useState([]);
   const dropdownRef = useRef(null);
   const navigate = useNavigate();
-  const { itemCount } = useSelector((state) => state.cart);
+const { itemCount } = useSelector((state) => state.cart);
+  const { itemCount: wishlistItemCount } = useSelector((state) => state.wishlist);
 
   useEffect(() => {
     loadCategories();
@@ -49,7 +50,8 @@ const Header = () => {
 
   const navigationItems = [
     { name: "Home", href: "/", icon: "Home" },
-    { name: "Orders", href: "/orders", icon: "Package" },
+{ name: "Orders", href: "/orders", icon: "Package" },
+    { name: "Wishlist", href: "/wishlist", icon: "Heart", count: wishlistItemCount },
   ];
 
   return (
@@ -129,6 +131,24 @@ const Header = () => {
                     className="absolute -top-2 -right-2 min-w-[20px] h-5 text-xs flex items-center justify-center animate-scale-pulse"
                   >
                     {itemCount > 99 ? "99+" : itemCount}
+                  </Badge>
+                )}
+</Button>
+
+              {/* Wishlist Button */}
+              <Button
+                variant="ghost"
+                size="sm"
+                onClick={() => navigate("/wishlist")}
+                className="relative p-2 text-gray-600 hover:text-primary-600 hover:bg-primary-50"
+              >
+                <ApperIcon name="Heart" className="h-5 w-5" />
+                {wishlistItemCount > 0 && (
+                  <Badge
+                    variant="primary"
+                    className="absolute -top-1 -right-1 min-w-[18px] h-[18px] text-xs flex items-center justify-center bg-red-500 text-white"
+                  >
+                    {wishlistItemCount > 99 ? "99+" : wishlistItemCount}
                   </Badge>
                 )}
               </Button>

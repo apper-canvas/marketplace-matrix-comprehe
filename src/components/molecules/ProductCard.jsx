@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addToCart } from "@/store/slices/cartSlice";
+import { toggleWishlistItem } from "@/store/slices/wishlistSlice";
 import { toast } from "react-toastify";
 import Card from "@/components/atoms/Card";
 import Button from "@/components/atoms/Button";
@@ -13,6 +14,9 @@ const ProductCard = ({ product, className = "" }) => {
   const [isImageLoading, setIsImageLoading] = useState(true);
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const { items: wishlistItems } = useSelector((state) => state.wishlist);
+  
+  const isInWishlist = wishlistItems.some((item) => item.Id === product.Id);
 
   const handleAddToCart = (e) => {
     e.stopPropagation();
@@ -25,6 +29,31 @@ const ProductCard = ({ product, className = "" }) => {
       pauseOnHover: true,
       draggable: true,
     });
+  };
+
+  const handleToggleWishlist = (e) => {
+    e.stopPropagation();
+    dispatch(toggleWishlistItem(product));
+    
+    if (isInWishlist) {
+      toast.success(`${product.name} removed from wishlist`, {
+        position: "top-right",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+      });
+    } else {
+      toast.success(`${product.name} added to wishlist!`, {
+        position: "top-right",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+      });
+    }
   };
 
   const handleCardClick = () => {
@@ -72,7 +101,27 @@ const ProductCard = ({ product, className = "" }) => {
       className={cn("group cursor-pointer", className)}
       onClick={handleCardClick}
     >
-      <div className="relative">
+<div className="relative">
+        {/* Wishlist Button */}
+        <button
+          onClick={handleToggleWishlist}
+          className={cn(
+            "absolute top-2 right-2 p-2 rounded-full shadow-md transition-all duration-200 z-10",
+            "hover:scale-110 active:scale-95",
+            isInWishlist
+              ? "bg-red-500 text-white hover:bg-red-600"
+              : "bg-white text-gray-400 hover:text-red-500 hover:bg-gray-50"
+          )}
+          title={isInWishlist ? "Remove from wishlist" : "Add to wishlist"}
+        >
+          <ApperIcon 
+            name="Heart" 
+            className={cn(
+              "h-4 w-4 transition-all duration-200",
+              isInWishlist ? "fill-current" : ""
+            )}
+          />
+        </button>
         {/* Product Image */}
         <div className="aspect-square bg-gray-100 relative overflow-hidden">
           {isImageLoading && (
