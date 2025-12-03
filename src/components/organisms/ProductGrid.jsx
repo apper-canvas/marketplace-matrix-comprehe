@@ -1,5 +1,5 @@
 import { useState, useEffect, useMemo } from "react";
-import ProductCard from "@/components/molecules/ProductCard";
+import { ProductCard } from "@/components/molecules/ProductCard";
 import Button from "@/components/atoms/Button";
 import ApperIcon from "@/components/ApperIcon";
 import Loading from "@/components/ui/Loading";
