@@ -2,7 +2,7 @@ import { RouterProvider } from "react-router-dom";
 import { router } from "./router";
 
 function App() {
-  // Test 1.0.6
+  // Test 1.0.8
   return <RouterProvider router={router}></RouterProvider>;
 }
 
